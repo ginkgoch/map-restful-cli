@@ -1,1 +1,1 @@
-export * from './randomPoint';
+export * from './serve';

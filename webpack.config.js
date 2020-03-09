@@ -6,6 +6,10 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: "bundle.js",
+    libraryTarget: 'umd'
+  },
+  node: {
+    __dirname: false
   },
   module: {
     rules: [{
@@ -27,11 +31,23 @@ module.exports = {
   resolve: {
     extensions: ['.json', '.js', '.jsx']
   },
-  devtool: 'source-map',
-  // devServer: {
-  //   contentBase: path.join(__dirname, '/dist/'),
-  //   inline: true,
-  //   host: 'localhost',
-  //   port: 8080,
-  // }
+  externals: {
+    ...getExternals()
+  },
+  devtool: 'source-map'
 };
+
+function getExternals() {
+  let modules = ['canvas', 'koa', 'koa-body'];
+  let externals = {};
+  modules.forEach(m => {
+    externals[m] = {
+      commonjs: m,
+      commonjs2: m,
+      amd: m,
+      root: m
+    };
+  });
+
+  return externals;
+}
