@@ -1,13 +1,9 @@
 import fs from 'fs';
 import path from 'path';
 import { MapEngine, Srs, ShapefileFeatureSource, FeatureLayer, FillStyle, Projection } from "ginkgoch-map";
-import NativeNode from 'ginkgoch-map/native/node';
-NativeNode.init();
 
 const CRS_GOOGLE = 'EPSG:900913';
-
 const configuredMaps = new Map();
-
 export class MapUtils {
     static loadMapConfigure(config) {
         if (config === undefined) {
