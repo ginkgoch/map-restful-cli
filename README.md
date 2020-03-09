@@ -1,40 +1,49 @@
-# Project Template for Map Command Line
+# Map RESTful API Service Tool
 
-This is minimalist map command line project template.
+This is a prefabricate map RESTful API service tool. Refer to [map router](https://github.com/ginkgoch/koa-map-router) for build-in APIs.
 
-## Build
-
-One off build.
+## Install
 ```bash
-yarn build
-```
-
-Build and watching (used for development).
-```bash
-yarn build --watch
+yarn add ginkgoch-map-restful-cli
 ```
 
 ## Usage
 ```bash
-yarn start random-point -f wkt
+Usage: bundle command [options]
+
+This is a prefabricate map RESTful API service tool.
+
+Options:
+  -V, --version      output the version number
+  -h, --help         output usage information
+
+Commands:
+  serve [options]    Serve a mapping RESTful API services
+  cluster [options]  Serve a mapping RESTful API services in cluster mode
 ```
 
-## Customize commands
-Customize the command is easy with few steps.
+### Serve a single process RESTful service
+```bash
+Usage: bundle serve [options]
 
-1. Copy `src/commands/randomPoint.js` to a new file <newCommand.js>
-2. Replace the `usage`, `desc` parameters etc.
-3. Implement `action` with customized action. The options are stored in the `cmd` parameter
-4. Export this new module in `src/commands/index.js`
+Serve a mapping RESTful API services
 
-## Built-in Features
-Following items are prepared.
-* Basic project layout
-* `Webpack` integrated
-* `Jest` integrated
-* `Babel` for ES6 configured
-* `Commander` integrated
-* `Ginkgoch map library` integrated
-* Build and test script are added
-* Node.js es6 support
-* A demo command to generate random point for a specific output format
+Options:
+  -p, --port <port>      The port of the service, default is 3000
+  -c, --config <config>  The map configure file, default is a demo map
+  -h, --help             output usage information
+```
+
+### Serve multiple process RESTful service
+```bash
+Usage: bundle cluster [options]
+
+Serve a mapping RESTful API services in cluster mode
+
+Options:
+  -p, --port <port>      The port of the service, default is 3000
+  -c, --config <config>  The map configure file, default is a demo map
+  -n, --slaves <slave>   The count of slave, must be greater than 0, default
+                         is cpu core count
+  -h, --help             output usage information
+```

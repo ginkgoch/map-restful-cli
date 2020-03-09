@@ -1,13 +1,16 @@
 {
-  "name": "template-es6",
+  "name": "ginkgoch-map-restful-cli",
   "version": "1.0.0",
-  "description": "This is minimalist project template for setup es6 project with webpack.",
+  "description": "This is a This is a prefabricate map RESTful API service tool.",
   "main": "index.js",
   "scripts": {
     "start": "node dist/bundle.js",
     "build": "webpack",
     "build-dev": "webpack -w",
     "test": "jest"
+  },
+  "bin": {
+    "map-restful": "./dist/bundle.js"
   },
   "author": "Ginkgoch",
   "license": "MIT",

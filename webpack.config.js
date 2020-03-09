@@ -1,6 +1,6 @@
 const path = require('path');
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: path.join(__dirname, 'src', 'index'),
   target: 'node',
   output: {
@@ -27,6 +27,9 @@ module.exports = {
         ]
       }
     }]
+  },
+  optimization: {
+    minimize: true
   },
   resolve: {
     extensions: ['.json', '.js', '.jsx']
