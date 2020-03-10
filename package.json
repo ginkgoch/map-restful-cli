@@ -1,8 +1,8 @@
 {
   "name": "ginkgoch-map-restful-cli",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "This is a This is a prefabricate map RESTful API service tool.",
-  "main": "index.js",
+  "main": "dist/bundle.js",
   "scripts": {
     "start": "node dist/bundle.js",
     "build": "webpack",
