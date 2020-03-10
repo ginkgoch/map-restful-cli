@@ -1,20 +1,20 @@
 {
   "name": "ginkgoch-map-restful-cli",
-  "version": "1.0.3",
+  "version": "1.0.8",
   "description": "This is a This is a prefabricate map RESTful API service tool.",
-  "main": "dist/bundle.js",
+  "main": "dist/index.js",
   "scripts": {
     "start": "node dist/bundle.js",
-    "build": "webpack",
-    "build-dev": "webpack -w",
+    "build": "babel ./src -d ./dist/",
     "test": "jest"
   },
   "bin": {
-    "map-restful": "./dist/bundle.js"
+    "map-restful": "./dist/index.js"
   },
   "author": "Ginkgoch",
   "license": "MIT",
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.3.1",
     "@types/jest": "^25.1.3",

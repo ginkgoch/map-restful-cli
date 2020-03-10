@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 import program from 'commander';
 import appInfo from '../package.json';
 import * as commands from './commands';

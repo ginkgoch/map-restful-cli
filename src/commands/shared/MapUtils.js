@@ -44,7 +44,7 @@ export class MapUtils {
         // Init the map rendering spatial reference system
         mapEngine.srs = new Srs(CRS_GOOGLE);
 
-        let sourcePath = path.resolve(__dirname, '../data/cntry02.shp');
+        let sourcePath = path.resolve(__dirname, '../../../data/cntry02.shp');
 
         // Create a feature source instance
         let source = new ShapefileFeatureSource(sourcePath);
