@@ -3,9 +3,14 @@ import path from 'path';
 import { MapEngine, Srs, ShapefileFeatureSource, FeatureLayer, FillStyle, Projection } from "ginkgoch-map";
 
 const CRS_GOOGLE = 'EPSG:900913';
-const configuredMaps = new Map();
+
 export class MapUtils {
-    static loadMapConfigure(config) {
+    /**
+     * Load map configure file
+     * @param {string} config Map configure file path, including one or more map state in JSON format 
+     * @param {Array<MapEngine>} configuredMaps The map instance array where the configured maps fill into
+     */
+    static loadMapConfigure(config, configuredMaps) {
         if (config === undefined) {
             return;
         }
@@ -23,7 +28,7 @@ export class MapUtils {
     
             for (let i = 0, length = contentJSON.length; i < length; i++) {
                 let mapEngine = MapEngine.parseJSON(contentJSON[i]);
-                configuredMaps.set(mapEngine.name, mapEngine);
+                configuredMaps.push(mapEngine);
             }
         }
         catch(ex) {
@@ -31,14 +36,9 @@ export class MapUtils {
         }
     }
 
-    static getInitMapEngine(name) {
-        let mapEngine = configuredMaps.get(name);
-        if (mapEngine !== undefined) {
-            return mapEngine;
-        }
-
+    static initMap(name) {
         // Create a engine with size 256 * 256 pixels
-        mapEngine = new MapEngine(256, 256);
+        let mapEngine = new MapEngine(256, 256);
         mapEngine.name = name;
 
         // Init the map rendering spatial reference system

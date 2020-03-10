@@ -14,13 +14,14 @@ function serve(port, config) {
         filter: contentType => /image/i.test(contentType) || /json/i.test(contentType)
     }));
 
-    let err = MapUtils.loadMapConfigure(config);
+    let maps = new Array();
+    let err = MapUtils.loadMapConfigure(config, maps);
     if (err) {
         console.error('[ERR]', err);
         return;
     }
 
-    let mapRouter = new MapRouter({ initMap: MapUtils.getInitMapEngine }).getRouter();
+    let mapRouter = new MapRouter({ maps, initMap: MapUtils.initMap }).getRouter();
     app.use(mapRouter.routes()).use(mapRouter.allowedMethods());
 
     app.listen(port, () => {
