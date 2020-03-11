@@ -1,16 +1,21 @@
 import fs from 'fs';
 import path from 'path';
+import { getPlugins } from './PluginUtils';
 import { MapEngine, Srs, ShapefileFeatureSource, FeatureLayer, FillStyle, Projection } from "ginkgoch-map";
 
 const CRS_GOOGLE = 'EPSG:900913';
 
 export class MapUtils {
+    static loadMapsFromPlugin(pluginDir, maps) {
+        getPlugins(pluginDir).map(p => p.getMap()).filter(m => m instanceof MapEngine).forEach(m => maps.push(m));
+    }
+
     /**
      * Load map configure file
      * @param {string} config Map configure file path, including one or more map state in JSON format 
      * @param {Array<MapEngine>} configuredMaps The map instance array where the configured maps fill into
      */
-    static loadMapConfigure(config, configuredMaps) {
+    static loadMapsFromConfigure(config, configuredMaps) {
         if (config === undefined) {
             return;
         }
