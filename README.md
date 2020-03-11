@@ -47,3 +47,9 @@ Options:
                          is cpu core count
   -h, --help             output usage information
 ```
+
+### Work with map configure file
+WIP...
+
+### Work with 
+WIP...
