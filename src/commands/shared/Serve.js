@@ -7,7 +7,7 @@ import { MapRouter } from 'ginkgoch-koa-map-router';
 import { MapUtils } from './MapUtils';
 import appInfo from '../../../package.json';
 
-function serve(port, config) {
+function serve(port, config, plugins = undefined) {
     const app = new Koa();
     app.use(logger());
     app.use(cors());
@@ -17,11 +17,14 @@ function serve(port, config) {
     }));
 
     let maps = new Array();
-    let err = MapUtils.loadMapConfigure(config, maps);
+    let err = MapUtils.loadMapsFromConfigure(config, maps);
     if (err) {
         console.error('[ERR]', err);
         return;
     }
+
+    // load plugins
+    MapUtils.loadMapsFromPlugin(plugins, maps);
 
     let mapRouter = new MapRouter({ maps, initMap: MapUtils.initMap }).getRouter();
     app.use(mapRouter.routes()).use(mapRouter.allowedMethods());
