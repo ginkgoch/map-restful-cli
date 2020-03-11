@@ -9,9 +9,10 @@ let clusterCommand = {
         { flags: '-p, --port <port>', desc: 'The port of the service, default is 3000' },
         { flags: '-c, --config <config>', desc: 'The map configure file, default is a demo map' },
         { flags: '-n, --slaves <slave>', desc: 'The count of slave, must be greater than 0, default is cpu core count' },
+        { flags: '-e, --plugins', desc: 'Enable plugins' },
     ],
     action(cmd) {
-        let { port, config, slaves } = cmd;
+        let { port, config, slaves, plugins } = cmd;
         if (port === undefined) {
             port = 3000;
         }
@@ -33,7 +34,7 @@ let clusterCommand = {
             });
         }
         else {
-            serve(port, config);
+            serve(port, config, plugins);
         }
     }
 };

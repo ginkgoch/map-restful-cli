@@ -4,10 +4,14 @@ import { getPlugins } from './PluginUtils';
 import { MapEngine, Srs, ShapefileFeatureSource, FeatureLayer, FillStyle, Projection } from "ginkgoch-map";
 
 const CRS_GOOGLE = 'EPSG:900913';
-
 export class MapUtils {
     static loadMapsFromPlugin(pluginDir, maps) {
-        getPlugins(pluginDir).map(p => p.getMap()).filter(m => m instanceof MapEngine).forEach(m => maps.push(m));
+        let pluginMaps = getPlugins(pluginDir).map(p => p.getMap()).filter(m => m instanceof MapEngine);
+        
+        pluginMaps.forEach(m => {
+            console.info(`Plugin: map ${m.name} loaded`)
+            maps.push(m); 
+        });
     }
 
     /**

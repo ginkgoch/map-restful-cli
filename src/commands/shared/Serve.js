@@ -1,3 +1,4 @@
+import path from 'path';
 import Koa from "koa";
 import compress from 'koa-compress';
 import cors from '@koa/cors';
@@ -24,7 +25,10 @@ function serve(port, config, plugins = undefined) {
     }
 
     // load plugins
-    MapUtils.loadMapsFromPlugin(plugins, maps);
+    if (plugins) {
+        let pluginDir = path.resolve(__dirname, '../../../plugins');
+        MapUtils.loadMapsFromPlugin(pluginDir, maps);
+    }
 
     let mapRouter = new MapRouter({ maps, initMap: MapUtils.initMap }).getRouter();
     app.use(mapRouter.routes()).use(mapRouter.allowedMethods());

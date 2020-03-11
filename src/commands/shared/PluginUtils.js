@@ -6,6 +6,6 @@ export function getPlugins(pluginsDir) {
         return [];
     }
 
-    let modules = fs.readdirSync(pluginsDir).map(f => path.resolve(pluginsDir, f)).map(f => require(f)).filter(m => m.getMap !== undefined);
+    let modules = fs.readdirSync(pluginsDir).filter(f => path.extname(f) === '.js').map(f => path.resolve(pluginsDir, f)).map(f => require(f)).filter(m => m.getMap !== undefined);
     return modules;
 }
