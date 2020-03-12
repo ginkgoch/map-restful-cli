@@ -1,2 +1,5 @@
 src/
 webpack.config**
+plugins/workshop.js
+plugins/workshop/
+tests/

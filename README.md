@@ -31,6 +31,7 @@ Serve a mapping RESTful API services
 Options:
   -p, --port <port>      The port of the service, default is 3000
   -c, --config <config>  The map configure file, default is a demo map
+  -e, --plugins <pluginDir>  The plugin directory, must be in the project node modules scope
   -h, --help             output usage information
 ```
 
@@ -43,13 +44,13 @@ Serve a mapping RESTful API services in cluster mode
 Options:
   -p, --port <port>      The port of the service, default is 3000
   -c, --config <config>  The map configure file, default is a demo map
-  -n, --slaves <slave>   The count of slave, must be greater than 0, default
-                         is cpu core count
+  -n, --slaves <slave>   The count of slave, must be greater than 0, default is cpu core count
+  -e, --plugins <pluginDir>  The plugin directory, must be in the project node modules scope
   -h, --help             output usage information
 ```
 
 ### Work with map configure file
 WIP...
 
-### Work with 
+### Work with plugins
 WIP...
