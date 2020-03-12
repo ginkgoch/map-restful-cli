@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node dist/index.js",
     "build": "babel ./src -d ./dist/",
-    "test": "jest"
+    "test": "jest",
+    "sync-plugins": "cp -rf plugins/* ../map-restful-plugins/"
   },
   "bin": {
     "map-restful": "./dist/index.js"
