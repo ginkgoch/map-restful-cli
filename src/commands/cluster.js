@@ -9,10 +9,10 @@ let clusterCommand = {
         { flags: '-p, --port <port>', desc: 'The port of the service, default is 3000' },
         { flags: '-c, --config <config>', desc: 'The map configure file, default is a demo map' },
         { flags: '-n, --slaves <slave>', desc: 'The count of slave, must be greater than 0, default is cpu core count' },
-        { flags: '-e, --plugins <pluginDir>', desc: 'The plugin directory, must be in the project node modules scope' },
+        { flags: '-e, --plugins <plugins>', desc: 'The plugin directory, must be in the project node modules scope' },
     ],
     action(cmd) {
-        let { port, config, slaves, plugins } = cmd;
+        let { port, config, slaves } = cmd;
         if (port === undefined) {
             port = 3000;
         }
@@ -34,7 +34,7 @@ let clusterCommand = {
             });
         }
         else {
-            serve(port, config, plugins);
+            serve(cmd);
         }
     }
 };

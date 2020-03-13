@@ -8,7 +8,12 @@ import { MapRouter } from 'ginkgoch-koa-map-router';
 import { MapUtils } from './MapUtils';
 import appInfo from '../../../package.json';
 
-function serve(port, config, pluginDir = undefined) {
+function serve(cmd) {
+    let { port, config, plugins } = cmd;
+    if (port === undefined) {
+        port = 3000;
+    }
+
     const app = new Koa();
     app.use(logger());
     app.use(cors());
@@ -25,12 +30,12 @@ function serve(port, config, pluginDir = undefined) {
     }
 
     // load plugins
-    if (pluginDir) {
-        if (!path.isAbsolute(pluginDir)) {
-            pluginDir = path.resolve(process.cwd(), pluginDir);
+    if (plugins) {
+        if (!path.isAbsolute(plugins)) {
+            plugins = path.resolve(process.cwd(), plugins);
         }
 
-        MapUtils.loadMapsFromPlugin(pluginDir, maps);
+        MapUtils.loadMapsFromPlugin(plugins, maps);
     }
 
     let mapRouter = new MapRouter({ maps, initMap: MapUtils.initMap }).getRouter();
