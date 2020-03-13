@@ -10,6 +10,9 @@ let clusterCommand = {
         { flags: '-c, --config <config>', desc: 'The map configure file, default is a demo map' },
         { flags: '-n, --slaves <slave>', desc: 'The count of slave, must be greater than 0, default is cpu core count' },
         { flags: '-e, --plugins <plugins>', desc: 'The plugin directory, must be in the project node modules scope' },
+        { flags: '-s, --ssl <ssl>', desc: 'Enable SSL' },
+        { flags: '--key <key>', desc: 'The SSL key' },
+        { flags: '--cert <cert>', desc: 'The SSL cert' },
     ],
     action(cmd) {
         let { port, config, slaves } = cmd;
