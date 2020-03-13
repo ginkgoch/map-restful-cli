@@ -1,6 +1,6 @@
 {
   "name": "ginkgoch-map-restful-cli",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "This is a This is a prefabricate map RESTful API service tool.",
   "main": "dist/index.js",
   "scripts": {
@@ -38,7 +38,8 @@
     "koa-body": "^4.1.1",
     "koa-compress": "^3.0.0",
     "koa-logger": "^3.2.1",
-    "koa-router": "^8.0.8"
+    "koa-router": "^8.0.8",
+    "koa-static": "^5.0.0"
   },
   "babel": {
     "presets": [

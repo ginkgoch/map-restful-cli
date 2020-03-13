@@ -6,6 +6,7 @@ import compress from 'koa-compress';
 import cors from '@koa/cors';
 import logger from 'koa-logger';
 import Router from 'koa-router';
+import Static from 'koa-static';
 import { MapRouter } from 'ginkgoch-koa-map-router';
 import { MapUtils } from './MapUtils';
 import appInfo from '../../../package.json';
@@ -37,6 +38,7 @@ function serve(cmd) {
             plugins = path.resolve(process.cwd(), plugins);
         }
 
+        app.use(Static(plugins));
         MapUtils.loadMapsFromPlugin(plugins, maps);
     }
 
